@@ -336,6 +336,8 @@ struct MotorManagerSync final : public ::rust::Opaque {
   bool cxx_set_control_mode(::std::int32_t id, ::std::string const &value) const noexcept;
   ::rust::String cxx_get_control_mode(::std::int32_t id) const noexcept;
   ::rust::String cxx_get_motor_state(::std::int32_t id) const noexcept;
+  bool cxx_set_motor_pid_gain(::std::int32_t id, float position_kp, float velocity_kp, float velocity_ki) const noexcept;
+  bool cxx_set_control_pd_gain(::std::int32_t id, float kp, float kd) const noexcept;
   bool cxx_stop() const noexcept;
   ~MotorManagerSync() = delete;
 

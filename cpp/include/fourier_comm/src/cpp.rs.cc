@@ -402,6 +402,8 @@ struct MotorManagerSync final : public ::rust::Opaque {
   bool cxx_set_control_mode(::std::int32_t id, ::std::string const &value) const noexcept;
   ::rust::String cxx_get_control_mode(::std::int32_t id) const noexcept;
   ::rust::String cxx_get_motor_state(::std::int32_t id) const noexcept;
+  bool cxx_set_motor_pid_gain(::std::int32_t id, float position_kp, float velocity_kp, float velocity_ki) const noexcept;
+  bool cxx_set_control_pd_gain(::std::int32_t id, float kp, float kd) const noexcept;
   bool cxx_stop() const noexcept;
   ~MotorManagerSync() = delete;
 
@@ -447,6 +449,10 @@ bool cxxbridge1$MotorManagerSync$cxx_set_control_mode(::MotorManagerSync const &
 void cxxbridge1$MotorManagerSync$cxx_get_control_mode(::MotorManagerSync const &self, ::std::int32_t id, ::rust::String *return$) noexcept;
 
 void cxxbridge1$MotorManagerSync$cxx_get_motor_state(::MotorManagerSync const &self, ::std::int32_t id, ::rust::String *return$) noexcept;
+
+bool cxxbridge1$MotorManagerSync$cxx_set_motor_pid_gain(::MotorManagerSync const &self, ::std::int32_t id, float position_kp, float velocity_kp, float velocity_ki) noexcept;
+
+bool cxxbridge1$MotorManagerSync$cxx_set_control_pd_gain(::MotorManagerSync const &self, ::std::int32_t id, float kp, float kd) noexcept;
 
 bool cxxbridge1$MotorManagerSync$cxx_stop(::MotorManagerSync const &self) noexcept;
 } // extern "C"
@@ -541,6 +547,14 @@ bool MotorManagerSync::cxx_set_control_mode(::std::int32_t id, ::std::string con
   ::rust::MaybeUninit<::rust::String> return$;
   cxxbridge1$MotorManagerSync$cxx_get_motor_state(*this, id, &return$.value);
   return ::std::move(return$.value);
+}
+
+bool MotorManagerSync::cxx_set_motor_pid_gain(::std::int32_t id, float position_kp, float velocity_kp, float velocity_ki) const noexcept {
+  return cxxbridge1$MotorManagerSync$cxx_set_motor_pid_gain(*this, id, position_kp, velocity_kp, velocity_ki);
+}
+
+bool MotorManagerSync::cxx_set_control_pd_gain(::std::int32_t id, float kp, float kd) const noexcept {
+  return cxxbridge1$MotorManagerSync$cxx_set_control_pd_gain(*this, id, kp, kd);
 }
 
 bool MotorManagerSync::cxx_stop() const noexcept {

@@ -19,4 +19,5 @@ if __name__ == "__main__":
         mode = manager.get_control_mode(id)
         print(f"Motor {id} is in control mode: {mode}")
         
-        
+    for id in ids:
+        manager.disable(id)
