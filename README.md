@@ -1,5 +1,7 @@
 # fourier_comm_examples
 
+This repository contains examples for the fourier_comm library, a Rust library for communication with the Fourier smart motors. This is pre-alpha software and is not yet ready for production use.
+
 ## cpp bindings for the fourier_comm library
 
 ```bash
